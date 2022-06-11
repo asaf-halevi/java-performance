@@ -21,7 +21,7 @@ public class WeakRefExample {
 
         logger.info("Weak before GC={}", weak.get());
 
-        // Containers get rid from weak refs when no strong reference exist
+        // Containers get rid of weak refs when no strong reference exist
         System.gc();
 
         try {
