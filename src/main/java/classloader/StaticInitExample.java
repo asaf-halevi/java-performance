@@ -5,9 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * @author ah864q
- *
  */
 public class StaticInitExample {
 
@@ -18,7 +16,7 @@ public class StaticInitExample {
         return Math.random();
     }
 
-    public static String myTextEditor (String text){
+    public static String myTextEditor(String text) {
         logger.debug("myTextEditor called with {}", text);
         return StringUtils.replace(text, "d", "Z");
     }

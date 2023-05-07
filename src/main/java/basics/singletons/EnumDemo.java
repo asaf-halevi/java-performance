@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * This class provides an demonstration of how to use singletons with enums.
- *
  */
 public class EnumDemo {
 

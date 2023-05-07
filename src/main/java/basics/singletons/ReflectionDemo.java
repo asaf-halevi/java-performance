@@ -1,15 +1,13 @@
 package basics.singletons;
 
-import java.lang.reflect.Constructor;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Constructor;
 
 /**
  * This class demonstrates how the singleton property is broken with reflection,
  * when using private constructors based methods.
- *
- * 
  */
 public class ReflectionDemo {
 

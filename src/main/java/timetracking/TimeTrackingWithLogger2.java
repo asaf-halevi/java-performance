@@ -49,6 +49,10 @@ public class TimeTrackingWithLogger2 {
         printResults("concat4NaiveWithStringBuilder", finish4, finish3);
     }
 
+    protected static void printResults(String methodName, long finishCurrent, long finishPrevious) {
+        logger.debug("Time consumed by {}\t{} seconds", methodName, (float) (finishCurrent / 10_000_000) / 100);
+    }
+
     private void concat1Naive() {
         String text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
         String result = "";
@@ -76,9 +80,5 @@ public class TimeTrackingWithLogger2 {
         for (int i = 0; i < NUMBER_OF_CONCATENATIONS; i++) {
             result.append(STATIC_TEXT);
         }
-    }
-
-    protected static void printResults(String methodName, long finishCurrent, long finishPrevious) {
-        logger.debug("Time consumed by {}\t{} seconds" , methodName, (float)(finishCurrent / 10_000_000) / 100);
     }
 }

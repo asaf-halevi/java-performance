@@ -7,11 +7,9 @@ import org.slf4j.profiler.Profiler;
 
 public class LogStringsSolution {
 
-    private static final String TEXT_UNIT = "ab";
-
-    private static final Logger logger = LoggerFactory.getLogger(LogStringsSolution.class.getName());
-
     protected static final int NUMBER_OF_ITERATIONS = 2000;
+    private static final String TEXT_UNIT = "ab";
+    private static final Logger logger = LoggerFactory.getLogger(LogStringsSolution.class.getName());
 
     public static void main(String[] args) {
         Profiler myProfiler = new Profiler("LogStringsSolution");

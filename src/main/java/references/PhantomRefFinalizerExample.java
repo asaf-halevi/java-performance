@@ -31,7 +31,7 @@ public class PhantomRefFinalizerExample {
 
         //check if references exist
         Reference<?> referenceFromQueue;
-        int i=1;
+        int i = 1;
         for (PhantomReference<Student> reference : references) {
             logger.info("Is reference no.{} in the queue? {}", i, reference.isEnqueued());
             i++;
@@ -42,7 +42,7 @@ public class PhantomRefFinalizerExample {
         while ((referenceFromQueue = referenceQueue.poll()) != null) {
             logger.info("Finalizing object no.{}", i);
             i++;
-            ((MyPhantomReference)referenceFromQueue).finalizeResources();
+            ((MyPhantomReference) referenceFromQueue).finalizeResources();
             referenceFromQueue.clear();
         }
     }

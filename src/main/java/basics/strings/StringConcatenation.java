@@ -5,9 +5,8 @@ import org.slf4j.profiler.Profiler;
 public class StringConcatenation {
 
     protected static final int NUMBER_OF_ITERATIONS = 10000;// change between 1, 100 & 10000
-
-    private static final int NUMBER_OF_CONCATENATIONS = 300;
     static final String STATIC_TEXT = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    private static final int NUMBER_OF_CONCATENATIONS = 300;
 
     public static void main(String[] args) {
         StringConcatenation stringExamples = new StringConcatenation();

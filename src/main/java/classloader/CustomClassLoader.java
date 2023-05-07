@@ -9,7 +9,6 @@ import java.io.InputStream;
  * A custom class loader that extends the default class loader and loads a byte array from the specified file
  *
  * @author ah864q
- *
  */
 public class CustomClassLoader extends ClassLoader {
 

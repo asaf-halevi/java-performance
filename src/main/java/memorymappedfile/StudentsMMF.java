@@ -10,11 +10,10 @@ import java.nio.channels.FileChannel;
 
 public class StudentsMMF {
 
+    public static final char CHAR_TO_FIND = 'J';
     private static final Logger logger = LoggerFactory.getLogger(StudentsMMF.class.getName());
-
     private static final String INPUT_FILE = "src/main/resources/bigFile.txt";
     private static final String MODE_READ = "r";
-    public static final char CHAR_TO_FIND = 'J';
 
     public static void main(String[] args) throws Exception {
         Profiler myProfiler = new Profiler("MemoryMappedFileExample");

@@ -10,7 +10,7 @@ public class Student {
     private long id;
     private String name;
 
-    public Student(){
+    public Student() {
         super();
     }
 
@@ -43,8 +43,8 @@ public class Student {
                 '}';
     }
 
-//    @Override
-//    public void finalize(){
-//        logger.info("Student {} was finalized", this.name);
-//    }
+    //    @Override
+    //    public void finalize(){
+    //        logger.info("Student {} was finalized", this.name);
+    //    }
 }

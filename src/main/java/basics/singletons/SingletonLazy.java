@@ -3,7 +3,6 @@ package basics.singletons;
 /**
  * Thread safe singleton with lazy initialization.
  * Not safe with deserialization.
- *
  */
 public class SingletonLazy {
 

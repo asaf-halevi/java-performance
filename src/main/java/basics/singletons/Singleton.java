@@ -4,10 +4,8 @@ import java.io.Serializable;
 
 public class Singleton implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     public static final Singleton INSTANCE = new Singleton();
-
+    private static final long serialVersionUID = 1L;
     private int value = 0;
 
     private Singleton() {

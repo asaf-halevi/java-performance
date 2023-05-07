@@ -18,7 +18,7 @@ public class TooManyObjectInMemorySolution {
         List<SoftReference<String>> strings = new ArrayList<>();
         strings.add(new SoftReference<>(VALUE));
         logger.info("Started");
-        for (int i=1; i < ITERATIONS; i++){
+        for (int i = 1; i < ITERATIONS; i++) {
             strings.add(new SoftReference<>(strings.get(i - 1).get() + VALUE));
         }
         logger.info("Finished");

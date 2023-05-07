@@ -6,9 +6,8 @@ import org.slf4j.profiler.Profiler;
 
 public class FixVariablesSolution {
 
-    private static final Logger logger = LoggerFactory.getLogger(FixVariablesSolution.class.getName());
-
     protected static final int NUMBER_OF_ITERATIONS = 10000000;
+    private static final Logger logger = LoggerFactory.getLogger(FixVariablesSolution.class.getName());
 
     public static void main(String[] args) {
         Profiler myProfiler = new Profiler("FixVariablesSolution");

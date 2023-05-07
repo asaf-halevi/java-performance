@@ -30,7 +30,8 @@ public class PrivateModeExample {
             FileChannel fileChannel = randomAccessFile.getChannel();
 
             // Get direct byte buffer access using channel.map() operation
-            MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.PRIVATE, 0, text.length());// MODE IS PRIVATE !!! CHECK OUTPUT WITH PRIVATE & READ_WRITE MODES !!!
+            MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.PRIVATE, 0,
+                    text.length());// MODE IS PRIVATE !!! CHECK OUTPUT WITH PRIVATE & READ_WRITE MODES !!!
             // fileChannel.unmap(); //NOTE THAT THERE IS NO fileChannel.unmap(); !!!
 
             // Write the content using put methods

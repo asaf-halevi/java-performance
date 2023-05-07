@@ -3,7 +3,6 @@ package basics.singletons;
 /**
  * Singleton with static factory method.
  * Not safe with deserialization.
- *
  */
 public class SingletonFactory {
 

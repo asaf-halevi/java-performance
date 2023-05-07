@@ -12,7 +12,7 @@ public class MyPhantomReference extends PhantomReference<Student> {
 
     public MyPhantomReference(Student referent, ReferenceQueue<? super Object> q) {
         super(referent, q);
-        logger.info ("{} added to queue", referent.getName ());
+        logger.info("{} added to queue", referent.getName());
     }
 
     public void finalizeResources() {

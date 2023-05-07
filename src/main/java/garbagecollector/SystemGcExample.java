@@ -11,7 +11,6 @@ import java.nio.channels.FileChannel;
  * Only when gc is called in row 36 - delete is successful.
  *
  * @author ah864q
- *
  */
 public class SystemGcExample {
     public static void main(String[] args) throws IOException {
@@ -33,7 +32,7 @@ public class SystemGcExample {
         mappedBuffer = null;
 
         //Try with and without this row
-//        System.gc();
+        //        System.gc();
 
         if (tempFile.delete()) {
             System.out.println("Successfully deleted: " + tempFile);

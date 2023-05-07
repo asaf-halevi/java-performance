@@ -1,19 +1,18 @@
 package basics.caliper;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
 import com.google.caliper.api.VmOptions;
 import com.google.caliper.runner.CaliperMain;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @VmOptions("-XX:-TieredCompilation")
 public class MyBenchmark {
 
     private static final Logger logger = LoggerFactory.getLogger(MyBenchmark.class.getName());
 
-    @Param({ "a", "b" })
+    @Param({"a", "b"})
     String s;
 
     public static void main(String[] args) {

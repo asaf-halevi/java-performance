@@ -15,7 +15,6 @@ import java.util.Scanner;
  * create a large file
  *
  * @author ah864q
- *
  */
 public class MemoryMappedFileExample {
 
@@ -25,7 +24,7 @@ public class MemoryMappedFileExample {
     private static final String OUTPUT_FILE = "src/main/resources/bigFile2.txt";
 
     public static void main(String[] args) throws Exception {
-        Scanner scanner = new Scanner (System.in);
+        Scanner scanner = new Scanner(System.in);
 
         MemoryMappedFileExample memoryMappedFileExample = new MemoryMappedFileExample();
         Profiler myProfiler = new Profiler("MemoryMappedFileExample");
@@ -49,12 +48,16 @@ public class MemoryMappedFileExample {
 
         myProfiler.stop().print();
         memoryCheckReminder(scanner);
-        scanner.close ();
+        scanner.close();
     }
 
-    private static void memoryCheckReminder (Scanner scanner) {
+    private static void memoryCheckReminder(Scanner scanner) {
         logger.info("Check memory with profiler an then enter text: ");
         scanner.next();
+    }
+
+    protected static String getFormattedNumber(long num) {
+        return NumberFormat.getNumberInstance(Locale.US).format(num);
     }
 
     public String getTextFromFile(String fileName) throws IOException {
@@ -118,9 +121,5 @@ public class MemoryMappedFileExample {
                 text.append((char) buffer.get());
             }
         }
-    }
-
-    protected static String getFormattedNumber(long num) {
-        return NumberFormat.getNumberInstance(Locale.US).format(num);
     }
 }

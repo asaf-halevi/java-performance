@@ -4,6 +4,10 @@ public class GcScope extends AbstractGcExample {
     GcScope t;
     private int i;
 
+    public GcScope(int i) {
+        this.i = i;
+    }
+
     public static void main(String args[]) {
         GcScope t1 = new GcScope(1);
         GcScope t2 = new GcScope(2);
@@ -28,10 +32,6 @@ public class GcScope extends AbstractGcExample {
         // reference)
 
         wasteTime();
-    }
-
-    public GcScope(int i) {
-        this.i = i;
     }
 
     @Override

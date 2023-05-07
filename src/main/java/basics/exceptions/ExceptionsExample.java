@@ -12,14 +12,6 @@ public class ExceptionsExample {
 
     int value;
 
-    public int getValue() {
-        return value;
-    }
-
-    public void reset() {
-        value = 0;
-    }
-
     public static void main(String[] args) {
         Profiler myProfiler = new Profiler("ExceptionsExample");
         ExceptionsExample exceptionsExample = new ExceptionsExample();
@@ -56,6 +48,14 @@ public class ExceptionsExample {
             }
         }
         myProfiler.stop().print();
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void reset() {
+        value = 0;
     }
 
     // Calculates without exception

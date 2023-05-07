@@ -21,25 +21,7 @@ public class LoiteringObjectsExample {
         myStackOfStudents = new Student[STACK_CAPACITY];
     }
 
-    public boolean isEmpty() {
-        return topOfStack == 0;
-    }
-
-    public void push(Student student) {
-        myStackOfStudents[topOfStack++] = student;
-    }
-
-    public Student pop() {
-        //The error
-        return myStackOfStudents[--topOfStack];
-
-        //The fix
-//        Student result = myStackOfStudents[--topOfStack];
-//        myStackOfStudents[topOfStack] = null;
-//        return result;
-    }
-
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         LoiteringObjectsExample studentsStack = new LoiteringObjectsExample();
         Scanner scanner = new Scanner(System.in);
         logger.info("Check the heap now.\nEnter some input to begin creation of objects.");
@@ -57,9 +39,28 @@ public class LoiteringObjectsExample {
         while (!studentsStack.isEmpty()) {
             logger.info("Student popped from stack: {} ", studentsStack.pop());
         }
-        logger.info("Check the Monitor and the number of Student objects in the heap dump now.\nEnter some input to close the application.");
+        logger.info(
+                "Check the Monitor and the number of Student objects in the heap dump now.\nEnter some input to close the application.");
         scanner.nextLine();
         scanner.close();
         logger.info("App Closed");
+    }
+
+    public boolean isEmpty() {
+        return topOfStack == 0;
+    }
+
+    public void push(Student student) {
+        myStackOfStudents[topOfStack++] = student;
+    }
+
+    public Student pop() {
+        //The error
+        return myStackOfStudents[--topOfStack];
+
+        //The fix
+        //        Student result = myStackOfStudents[--topOfStack];
+        //        myStackOfStudents[topOfStack] = null;
+        //        return result;
     }
 }

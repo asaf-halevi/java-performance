@@ -9,7 +9,6 @@ import org.slf4j.profiler.Profiler;
  * The improvements are due to JVM's code refactoring
  *
  * @author ah864q
- *
  */
 public class CodeRefactoringExample {
 

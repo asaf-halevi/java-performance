@@ -32,6 +32,10 @@ public class RegularFileExample {
         myProfiler.stop().print();
     }
 
+    protected static String getTime(long time) {
+        return NumberFormat.getNumberInstance(Locale.US).format(time);
+    }
+
     public String getTextFromFile(String fileName) throws IOException {
         File file = new File(fileName);
 
@@ -65,9 +69,5 @@ public class RegularFileExample {
         } catch (IOException e) {
             logger.error(e.getMessage());
         }
-    }
-
-    protected static String getTime(long time) {
-        return NumberFormat.getNumberInstance(Locale.US).format(time);
     }
 }

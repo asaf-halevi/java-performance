@@ -8,7 +8,6 @@ package jvm;
  * Which implies that a reference to Car cannot escape either. So the compiler can safely allocate both objects on the stack.
  *
  * @author ah864q
- *
  */
 public class EscapeAnalysisExample {
     public static void main(String[] args) {

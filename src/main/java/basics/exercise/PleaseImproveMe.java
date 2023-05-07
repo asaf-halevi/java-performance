@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * Fire enough employees so taht the total salary will fit the budget.
  * You must not fire pregnant employees
- *
  */
 public class PleaseImproveMe {
 

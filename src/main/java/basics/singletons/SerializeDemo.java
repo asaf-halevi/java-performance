@@ -1,19 +1,13 @@
 package basics.singletons;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.*;
 
 /**
  * This class demonstrates how the singleton property is broken with deserialization,
  * when using private constructors based methods.
- *
  */
 public class SerializeDemo implements Serializable {
 

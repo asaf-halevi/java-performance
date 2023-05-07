@@ -16,7 +16,7 @@ public class TimeTrackingWithLogger {
 
     private static void doSomeThing() {
         String s = "*";
-        for (int i=0; i < 100_000; i++){
+        for (int i = 0; i < 100_000; i++) {
             s = s + "*";
         }
     }

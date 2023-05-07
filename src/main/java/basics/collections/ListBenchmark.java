@@ -11,9 +11,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ListBenchmark {
 
-    private static final Logger logger = LoggerFactory.getLogger(ListBenchmark.class.getName());
-
     protected static final int NUMBER_OF_ITERATIONS = 100000;
+    private static final Logger logger = LoggerFactory.getLogger(ListBenchmark.class.getName());
 
     public static void main(String[] args) {
         ListBenchmark listBenchmark = new ListBenchmark();
