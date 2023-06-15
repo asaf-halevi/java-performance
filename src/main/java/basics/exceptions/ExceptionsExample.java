@@ -6,10 +6,9 @@ import org.slf4j.profiler.Profiler;
 
 public class ExceptionsExample {
 
+    public static final String ERROR_MSG = "You'll never see this!";
     private static final Logger logger = LoggerFactory.getLogger(ExceptionsExample.class.getName());
-
-    private static final int NUMBER_OF_ITERATIONS = 100000000;
-
+    private static final int NUMBER_OF_ITERATIONS = 100_000_000;
     int value;
 
     public static void main(String[] args) {
@@ -24,7 +23,7 @@ public class ExceptionsExample {
         }
 
         exceptionsExample.reset();
-        myProfiler.start("Exception is never thrown");
+        myProfiler.start("Try-catch block with no exception thrown");
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
             try {
                 exceptionsExample.tryCatchWithNoExceptionThrown();
@@ -33,20 +32,31 @@ public class ExceptionsExample {
         }
 
         exceptionsExample.reset();
-        myProfiler.start("Create exception without throwing it, and log");
+        myProfiler.start("Create exception without throwing");
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            exceptionsExample.createExceptionWithoutThrowing();
+            try {
+                exceptionsExample.createExceptionWithoutThrowing();
+            } catch (Exception e) {
+            }
         }
 
-        // creatingAndThrowingException - throw exception and log
         exceptionsExample.reset();
-        myProfiler.start("Throw exception and log");
+        myProfiler.start("Create exception and throw it, short stacktrace");
+        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
+            try {
+                exceptionsExample.creatingAndThrowingExceptionLevel8();
+            } catch (Exception e) {
+            }
+        }
+
+        myProfiler.start("Create exception and throw it, long stacktrace");
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
             try {
                 exceptionsExample.creatingAndThrowingException();
             } catch (Exception e) {
             }
         }
+
         myProfiler.stop().print();
     }
 
@@ -62,7 +72,7 @@ public class ExceptionsExample {
     public void onlyLogging() {
         value++;
         if (value % 10 == 0) {
-            logger.trace("You'll never see this!");
+            logger.trace(ERROR_MSG);
         }
     }
 
@@ -70,7 +80,7 @@ public class ExceptionsExample {
     public void tryCatchWithNoExceptionThrown() throws Exception {
         value++;
         if (value % 10 == 0) {
-            logger.trace("You'll never see this!");
+            logger.trace(ERROR_MSG);
         }
         if (value == -1) {
             throw new Exception();
@@ -81,16 +91,48 @@ public class ExceptionsExample {
     public void createExceptionWithoutThrowing() {
         value++;
         if (value % 10 == 0) {
-            logger.trace("You'll never see this!");
+            logger.trace(ERROR_MSG);
             Exception e = new Exception();
         }
     }
 
-    // throw exceptions
     public void creatingAndThrowingException() throws Exception {
+        creatingAndThrowingExceptionLevel1();
+    }
+
+    public void creatingAndThrowingExceptionLevel1() throws Exception {
+        creatingAndThrowingExceptionLevel2();
+    }
+
+    public void creatingAndThrowingExceptionLevel2() throws Exception {
+        creatingAndThrowingExceptionLevel3();
+    }
+
+    public void creatingAndThrowingExceptionLevel3() throws Exception {
+        creatingAndThrowingExceptionLevel4();
+    }
+
+    public void creatingAndThrowingExceptionLevel4() throws Exception {
+        creatingAndThrowingExceptionLevel5();
+    }
+
+    public void creatingAndThrowingExceptionLevel5() throws Exception {
+        creatingAndThrowingExceptionLevel6();
+    }
+
+    public void creatingAndThrowingExceptionLevel6() throws Exception {
+        creatingAndThrowingExceptionLevel7();
+    }
+
+    public void creatingAndThrowingExceptionLevel7() throws Exception {
+        creatingAndThrowingExceptionLevel8();
+    }
+
+    // throw exceptions
+    public void creatingAndThrowingExceptionLevel8() throws Exception {
         value++;
         if (value % 10 == 0) {
-            logger.trace("You'll never see this!");
+            logger.trace(ERROR_MSG);
             throw new Exception();
         }
     }
