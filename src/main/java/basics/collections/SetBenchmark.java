@@ -8,19 +8,22 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class SetBenchmark {
 
-    protected static final int NUMBER_OF_ITERATIONS = 100000;
+    protected static final int NUMBER_OF_ITERATIONS = 100_000;
 
     public static void main(String[] args) {
         SetBenchmark setBenchmark = new SetBenchmark();
 
-        Set hashSet = new HashSet<Employee>();
+        Set<Employee> hashSet = new HashSet<>();
         setBenchmark.testSet(hashSet, "HashSet");
 
-        Set copyOnWriteArraySet = new CopyOnWriteArraySet<Employee>();
+        Set<Employee> hashSetPredefined = new HashSet<>(NUMBER_OF_ITERATIONS);
+        setBenchmark.testSet(hashSet, "HashSet with predefined size");
+
+        Set<Employee> copyOnWriteArraySet = new CopyOnWriteArraySet<>();
         setBenchmark.testSet(copyOnWriteArraySet, "CopyOnWriteArraySet");
     }
 
-    public void testSet(Set employeeSet, String setTypeName) {
+    public void testSet(Set<Employee> employeeSet, String setTypeName) {
         Profiler myProfiler = new Profiler(setTypeName + " Benchmark");
 
         myProfiler.start("buildSet " + setTypeName);
@@ -40,7 +43,7 @@ public class SetBenchmark {
         }
     }
 
-    private void removeFromSet(Set employeeSet) {
+    private void removeFromSet(Set<Employee> employeeSet) {
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
             employeeSet.remove(0);
         }
