@@ -7,7 +7,7 @@ import org.slf4j.profiler.Profiler;
 import java.text.DecimalFormat;
 
 public class TimeTrackingWithSlf4j {
-    private static final Logger logger = LoggerFactory.getLogger(TimeTrackingWithSlf4j.class.getName());
+
     private static final int NUMBER_OF_ITERATIONS = 10000;
     private static final int NUMBER_OF_CONCATENATIONS = 300;
     private static final String STATIC_TEXT = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
