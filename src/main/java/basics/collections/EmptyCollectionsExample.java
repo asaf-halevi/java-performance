@@ -8,27 +8,27 @@ import java.util.List;
 
 public class EmptyCollectionsExample {
 
-    private static final int NUMBER_OF_ITERATIONS = 1_000_000_000;
+    private static final int NUMBER_OF_ITERATIONS = 10_000_000;
 
     public static void main(String[] args) {
+        List<List<Object>> myList1 = new ArrayList<>(NUMBER_OF_ITERATIONS);
+        List<List<Object>> myList2 = new ArrayList<>(NUMBER_OF_ITERATIONS);
+
         Profiler myProfiler = new Profiler("EmptyCollectionsExample");
         myProfiler.start("getEmptyCollectionsWithCreation");
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            getEmptyCollectionsWithCreation();
+            myList1.add(new ArrayList<>());
         }
 
         myProfiler.start("getEmptyCollectionsWithoutCreation");
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            getEmptyCollectionsWithoutCreation();
+            myList2.add(Collections.emptyList());
         }
+
         myProfiler.stop().print();
-    }
 
-    private static List<Object> getEmptyCollectionsWithCreation() {
-        return new ArrayList<>();
-    }
 
-    private static List<Object> getEmptyCollectionsWithoutCreation() {
-        return Collections.emptyList();
+        myList1.get(0).add(new Object());
+        //        myList2.get(0).add(new Object()); //throws UnsupportedOperationException
     }
 }
