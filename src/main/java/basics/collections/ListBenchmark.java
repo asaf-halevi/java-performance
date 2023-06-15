@@ -10,24 +10,26 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ListBenchmark {
-
-    protected static final int NUMBER_OF_ITERATIONS = 100000;
+    protected static final int NUMBER_OF_ITERATIONS = 100_000;
     private static final Logger logger = LoggerFactory.getLogger(ListBenchmark.class.getName());
 
     public static void main(String[] args) {
         ListBenchmark listBenchmark = new ListBenchmark();
 
-        List employeeArrayList = new ArrayList();
+        List<Employee> employeeArrayList = new ArrayList<>();
         listBenchmark.testList(employeeArrayList, "ArrayList");
 
-        List employeeLinkedList = new LinkedList();
+        List<Employee> employeeArrayListPredefined = new ArrayList<>(NUMBER_OF_ITERATIONS);
+        listBenchmark.testList(employeeArrayListPredefined, "ArrayList with predefined size");
+
+        List<Employee> employeeLinkedList = new LinkedList<>();
         listBenchmark.testList(employeeLinkedList, "LinkedList");
 
-        List copyOnWriteArrayList = new CopyOnWriteArrayList<Employee>();
+        List<Employee> copyOnWriteArrayList = new CopyOnWriteArrayList<>();
         listBenchmark.testList(copyOnWriteArrayList, "CopyOnWriteArrayList");
     }
 
-    public void testList(List employeeList, String listTypeName) {
+    public void testList(List<Employee> employeeList, String listTypeName) {
         Profiler myProfiler = new Profiler(listTypeName + " Benchmark");
 
         myProfiler.start("buildList " + listTypeName);
@@ -48,13 +50,13 @@ public class ListBenchmark {
         }
     }
 
-    private void readFromList(List employeeList) {
+    private void readFromList(List<Employee> employeeList) {
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            employeeList.get(i);
+            logger.trace("value={}", employeeList.get(i));
         }
     }
 
-    private void removeFromList(List employeeList) {
+    private void removeFromList(List<Employee> employeeList) {
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
             employeeList.remove(0);
         }
