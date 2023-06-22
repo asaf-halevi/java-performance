@@ -46,12 +46,11 @@ public class SerializeDemo implements Serializable {
         }
 
         if (singleton == singleton2) {
-            logger.debug("Two objects are same");
+            logger.debug("Two objects are the same");
         } else {
-            logger.debug("Two objects are not same");
+            logger.debug("Two objects are NOT the same");
         }
 
-        logger.debug("{}", singleton.getValue());
-        logger.debug("{}", singleton2.getValue());
+        logger.debug("Value of original is {}. Value of copy is {}.", singleton.getValue(), singleton2.getValue());
     }
 }

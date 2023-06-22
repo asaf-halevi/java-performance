@@ -13,8 +13,8 @@ public class EnumDemo {
     public static void main(String[] args) {
         SingletonEnum singleton = SingletonEnum.INSTANCE;
 
-        logger.debug("{}", singleton.getValue());
+        logger.debug("Value before change: {}", singleton.getValue());
         singleton.setValue(2);
-        logger.debug("{}", singleton.getValue());
+        logger.debug("Value after change: {}", singleton.getValue());
     }
 }
