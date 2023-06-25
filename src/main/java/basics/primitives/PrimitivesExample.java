@@ -30,7 +30,7 @@ public class PrimitivesExample {
         myProfiler.start("double");
         double primitiveDouble = 0.0;
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            primitiveDouble+=0.1;
+            primitiveDouble += 0.1;
         }
         logger.trace("primitiveDouble={}", primitiveDouble);
 

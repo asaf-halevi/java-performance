@@ -46,7 +46,7 @@ public class LogWithParamsExample {
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
             logger.trace("The number is {}", Math.random());
         }
-        
+
         myProfiler.stop().print();
     }
 }
