@@ -4,7 +4,7 @@ import org.slf4j.profiler.Profiler;
 
 public class StaticExample {
 
-    private static final int NUMBER_OF_ITERATIONS = 100_000;
+    private static final int NUMBER_OF_ITERATIONS = 100_000_000;
     private static long staticVar = 0;
 
     public static void main(String[] args) {

@@ -14,24 +14,46 @@ public class PrimitivesExample {
         Profiler myProfiler = new Profiler("PrimitivesExample");
 
         myProfiler.start("int");
+        int primitiveInt = 0;
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            int a = 1;
+            primitiveInt++;
         }
+        logger.trace("primitiveInt={}", primitiveInt);
 
         myProfiler.start("Integer");
+        Integer wrapperInt = 0;
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            Integer a = new Integer(1);
+            wrapperInt++;
         }
+        logger.trace("wrapperInt={}", wrapperInt);
+
+        myProfiler.start("double");
+        double primitiveDouble = 0.0;
+        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
+            primitiveDouble+=0.1;
+        }
+        logger.trace("primitiveDouble={}", primitiveDouble);
+
+        myProfiler.start("Double");
+        Double wrapperDouble = 0.0;
+        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
+            wrapperDouble += 0.1;
+        }
+        logger.trace("wrapperDouble={}", wrapperDouble);
 
         myProfiler.start("boolean");
+        boolean primitiveBoolean = true;
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            boolean isItForReal = true;
+            primitiveBoolean = !primitiveBoolean;
         }
+        logger.trace("primitiveBoolean={}", primitiveBoolean);
 
         myProfiler.start("Boolean");
+        Boolean wrapperBoolean = true;
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            Boolean isItForReal = true;
+            wrapperBoolean = !wrapperBoolean;
         }
+        logger.trace("wrapperBoolean={}", wrapperBoolean);
 
         myProfiler.stop().print();
     }
