@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class JstatExample {
+public class JstatExampleList {
 
-    private static final Logger logger = LoggerFactory.getLogger(JstatExample.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(JstatExampleList.class.getName());
 
     public static void main(String[] args) {
         String processId = ManagementFactory.getRuntimeMXBean().getName();
@@ -22,6 +22,7 @@ public class JstatExample {
             logger.debug("Write text ['out' to finish]:");
             inputText = scanner.next();
             texts.add(inputText);
+            logger.debug("Number of texts is {}", texts.size());
         } while (!inputText.equals("out"));
         scanner.close();
         logger.debug("Thanks!");
