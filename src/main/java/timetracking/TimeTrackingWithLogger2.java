@@ -3,15 +3,12 @@ package timetracking;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.DecimalFormat;
-
 public class TimeTrackingWithLogger2 {
 
     private static final Logger logger = LoggerFactory.getLogger(TimeTrackingWithLogger2.class.getName());
-    private static final int NUMBER_OF_ITERATIONS = 10000;
+    private static final int NUMBER_OF_ITERATIONS = 1000;
     private static final int NUMBER_OF_CONCATENATIONS = 300;
     private static final String STATIC_TEXT = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    private static final DecimalFormat percentageFormat = new DecimalFormat("#.00");
 
     public static void main(String[] args) {
         TimeTrackingWithLogger2 stringExamples = new TimeTrackingWithLogger2();

@@ -2,14 +2,11 @@ package timetracking;
 
 import org.slf4j.profiler.Profiler;
 
-import java.text.DecimalFormat;
-
 public class TimeTrackingWithSlf4j {
 
-    private static final int NUMBER_OF_ITERATIONS = 10000;
+    private static final int NUMBER_OF_ITERATIONS = 1000;
     private static final int NUMBER_OF_CONCATENATIONS = 300;
     private static final String STATIC_TEXT = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    private static final DecimalFormat percentageFormat = new DecimalFormat("#.00");
 
     public static void main(String[] args) {
         TimeTrackingWithSlf4j stringExamples = new TimeTrackingWithSlf4j();
