@@ -34,17 +34,12 @@ public class LogWithParamsExample {
             logger.trace("The number is {}", Math.random());
         }
 
-        myProfiler.start("isTraceEnabled and written wrong");
+        myProfiler.start("isTraceEnabled");
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
             if (logger.isTraceEnabled()) {
-                logger.trace("The number is " + Math.random());
+                double number = Math.random() * Math.random();
+                logger.trace("The number is {}", number);
             }
-        }
-
-        // will be beneficial once we change log level to trace
-        myProfiler.start("isTraceEnabled and written properly");
-        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            logger.trace("The number is {}", Math.random());
         }
 
         myProfiler.stop().print();

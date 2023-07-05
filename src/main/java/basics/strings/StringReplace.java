@@ -17,7 +17,7 @@ public class StringReplace {
             text = text.replace("b", "a");
         }
 
-        myProfiler.start("StringUtils.replac");
+        myProfiler.start("StringUtils.replace");
         for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
             text = StringUtils.replace(text, "a", "b");
             text = StringUtils.replace(text, "b", "a");
