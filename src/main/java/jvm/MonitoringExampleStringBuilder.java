@@ -6,9 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.lang.management.ManagementFactory;
 import java.util.Scanner;
 
-public class JstatExampleStringBuilder {
+public class MonitoringExampleStringBuilder {
 
-    private static final Logger logger = LoggerFactory.getLogger(JstatExampleStringBuilder.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(MonitoringExampleStringBuilder.class.getName());
 
     public static void main(String[] args) {
         String processId = ManagementFactory.getRuntimeMXBean().getName();

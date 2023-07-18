@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class JstatExampleList {
+public class ProfilerExampleList {
 
-    private static final Logger logger = LoggerFactory.getLogger(JstatExampleList.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ProfilerExampleList.class.getName());
 
     public static void main(String[] args) {
         String processId = ManagementFactory.getRuntimeMXBean().getName();
