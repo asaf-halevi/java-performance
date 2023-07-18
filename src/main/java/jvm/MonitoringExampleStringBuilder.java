@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.management.ManagementFactory;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MonitoringExampleStringBuilder {
@@ -14,16 +16,18 @@ public class MonitoringExampleStringBuilder {
         String processId = ManagementFactory.getRuntimeMXBean().getName();
         logger.debug("PID={}", processId);
         Scanner scanner = new Scanner(System.in);
-        StringBuilder stringBuilder;
+        StringBuilder tempValue;
         int numOfIterations;
+        List<String> totalValues = new ArrayList<>();
         do {
-            stringBuilder = new StringBuilder();
+            tempValue = new StringBuilder();
             logger.debug("Numbers of iterations (0 to exit): ");
             numOfIterations = scanner.nextInt();
             long millis = System.currentTimeMillis();
             for (int i = 0; i < numOfIterations; i++) {
-                stringBuilder.append("a");
+                tempValue.append("a");
             }
+            totalValues.add(tempValue.toString());
             logger.debug("Time consumed for {} iterations: {} millis", numOfIterations, System.currentTimeMillis() - millis);
         } while (numOfIterations != 0);
         scanner.close();
