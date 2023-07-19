@@ -24,7 +24,7 @@ public class MonitoringExampleStringBuilder {
             numOfIterations = scanner.nextInt();
             long millis = System.currentTimeMillis();
             for (int i = 0; i < numOfIterations; i++) {
-                tempValue.append("a");
+                tempValue.append("abc");
             }
             totalValues.add(tempValue.toString());
             logger.debug("Time consumed for {} iterations: {} millis", numOfIterations, System.currentTimeMillis() - millis);
