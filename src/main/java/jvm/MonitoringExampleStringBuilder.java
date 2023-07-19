@@ -29,7 +29,9 @@ public class MonitoringExampleStringBuilder {
             }
             totalValues.add(tempValue.toString());
             logger.debug("Time consumed for {} iterations: {} millis", numOfIterations, System.currentTimeMillis() - millis);
+            System.gc(); // Not a good practice! Just for the training.
         } while (numOfIterations != 0);
+        logger.debug("Total Number of strings in list: {}", totalValues.size());
         scanner.close();
     }
 }
