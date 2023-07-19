@@ -16,11 +16,10 @@ public class MonitoringExampleStringBuilder {
         String processId = ManagementFactory.getRuntimeMXBean().getName();
         logger.debug("PID={}", processId);
         Scanner scanner = new Scanner(System.in);
-        StringBuilder tempValue;
-        int numOfIterations;
         List<String> totalValues = new ArrayList<>();
+        int numOfIterations;
         do {
-            tempValue = new StringBuilder();
+            StringBuilder tempValue = new StringBuilder();
             logger.debug("Numbers of iterations (0 to exit): ");
             numOfIterations = scanner.nextInt();
             long millis = System.currentTimeMillis();
