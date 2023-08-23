@@ -6,8 +6,6 @@ package jvm;
  * If the Person object was on the heap then the reference to Car would escape.
  * But in this case a compiler can determine, with escape analysis, that the Person object itself does not escape the invocation of example().
  * Which implies that a reference to Car cannot escape either. So the compiler can safely allocate both objects on the stack.
- *
- * @author ah864q
  */
 public class EscapeAnalysisExample {
     public static void main(String[] args) {

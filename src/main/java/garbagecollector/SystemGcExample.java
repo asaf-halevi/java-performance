@@ -9,8 +9,6 @@ import java.nio.channels.FileChannel;
 
 /**
  * Only when gc is called in row 36 - delete is successful.
- *
- * @author ah864q
  */
 public class SystemGcExample {
     public static void main(String[] args) throws IOException {
@@ -19,7 +17,7 @@ public class SystemGcExample {
         }
     }
 
-    protected static void someIoJob() throws IOException, FileNotFoundException {
+    protected static void someIoJob() throws IOException {
         File tempFile = File.createTempFile("Temp", null);
         tempFile.deleteOnExit();
         RandomAccessFile raTempFile = new RandomAccessFile(tempFile, "rw");

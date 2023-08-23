@@ -7,8 +7,6 @@ import org.slf4j.profiler.Profiler;
 /**
  * check differences when running this code 10K or 10M times
  * The improvements are due to JVM's code refactoring
- *
- * @author ah864q
  */
 public class CodeRefactoringExample {
 

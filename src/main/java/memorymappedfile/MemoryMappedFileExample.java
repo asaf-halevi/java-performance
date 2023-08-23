@@ -13,8 +13,6 @@ import java.util.Scanner;
 
 /**
  * create a large file
- *
- * @author ah864q
  */
 public class MemoryMappedFileExample {
 
