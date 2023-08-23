@@ -12,8 +12,8 @@ public class CodeRefactoringExample {
 
     private static final Logger logger = LoggerFactory.getLogger(CodeRefactoringExample.class.getName());
 
-    private static final long ITERATIONS1 = 10_000;
-    private static final long ITERATIONS2 = ITERATIONS1 * 1000;
+    private static final long ITERATIONS1 = 1000;//TRY WITH 10_000
+    private static final long ITERATIONS2 = ITERATIONS1 * 4;
 
     public static void main(String[] args) {
         Profiler myProfiler = new Profiler("CodeRefactoringExample");
