@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class StringDeduplicationExample {
 
+    public static final String ENTER_TEXT = "Enter text: ";
     private static final Logger logger = LoggerFactory.getLogger(StringDeduplicationExample.class.getName());
-
     private static Scanner scanner;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {// -XX:+UseG1GC -XX:+UseStringDeduplication
         scanner = new Scanner(System.in);
         checkLiteralString();
         checkNonLiteralStringWithoutIntern();
@@ -28,17 +28,17 @@ public class StringDeduplicationExample {
     }
 
     private static void checkNonLiteralStringWithoutIntern() {
-        System.out.print("Enter text: ");
+        logger.debug(ENTER_TEXT);
         String first = scanner.next();
-        System.out.print("Enter text: ");
+        logger.debug(ENTER_TEXT);
         String sameAsFirst = scanner.next();
         logger.debug("String from scanner are equal={}", first == sameAsFirst);
     }
 
     private static void checkNonLiteralStringWithIntern() {
-        System.out.print("Enter text: ");
+        logger.debug(ENTER_TEXT);
         String first = scanner.next().intern();
-        System.out.print("Enter text: ");
+        logger.debug(ENTER_TEXT);
         String sameAsFirst = scanner.next().intern();
         logger.debug("String from scanner after intern are equal={}", first == sameAsFirst);
     }
