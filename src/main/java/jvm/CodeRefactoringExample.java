@@ -15,7 +15,7 @@ public class CodeRefactoringExample {
     private static final long ITERATIONS1 = 1000;//TRY WITH 10_000
     private static final long ITERATIONS2 = ITERATIONS1 * 4;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {//-XX:+UnlockDiagnosticVMOptions -XX:+PrintInlining
         Profiler myProfiler = new Profiler("CodeRefactoringExample");
 
         myProfiler.start(ITERATIONS1 + " iterations");
