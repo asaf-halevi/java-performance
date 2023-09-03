@@ -1,5 +1,6 @@
 package garbagecollector;
 
+// run with -verbosegc
 public class GcScope extends AbstractGcExample {
     GcScope t;
     private int i;
