@@ -4,12 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FinalizeExample extends AbstractGcExample {
+    private static final Logger logger = LoggerFactory.getLogger(FinalizeExample.class.getName());
 
     public static void main(String[] args) {
         FinalizeExample example = new FinalizeExample();
         example.createAnimal();
         wasteTime();
-        System.out.println("An animal was born\n");
+        logger.debug("An animal was born");
     }
 
     private void createAnimal() {
