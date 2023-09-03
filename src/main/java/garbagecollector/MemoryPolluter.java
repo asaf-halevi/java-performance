@@ -12,8 +12,8 @@ import java.util.Scanner;
 /**
  * Run with different GC settings:
  * Serial: -XX:+UseSerialGC
+ * CMS: -XX:+UseConcMarkSweepGC
  * Parallel: -XX:+UseParallelGC -XX:ParallelGCThreads=6
- * CMS: nothing... it's Java 8's default
  * G1: -XX:+UseG1GC -XX:+UseStringDeduplication
  * <p>
  * Try again. but this time do not save to the list (comment out line 44)
