@@ -7,7 +7,6 @@ import org.slf4j.profiler.Profiler;
 import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Run with different GC settings:
@@ -27,10 +26,6 @@ public class MemoryPolluter {
     public static void main(String[] args) {
         String processId = ManagementFactory.getRuntimeMXBean().getName();
         logger.debug("PID={}", processId);
-        Scanner scanner = new Scanner(System.in);
-        logger.debug("Press any key to start");
-        scanner.next();
-        scanner.close();
         List<String> totalValues = new ArrayList<>();
         StringBuilder tempValue;
         Profiler profiler = new Profiler("main");
