@@ -15,9 +15,8 @@ import java.util.List;
  * Parallel: -XX:+UseParallelGC
  * G1: -XX:+UseG1GC -XX:+UseStringDeduplication
  * <p>
- * Epsilon: -XX:+UnlockExperimentalVMOptions -XX:+UseEpsilonGC
- * ZGC: -XX:+UnlockExperimentalVMOptions -XX:+UseZGC
- * Shenandoah: -XX:+UnlockExperimentalVMOptions -XX:+UseShenandoahGC
+ * Epsilon (Use Java 11): -XX:+UnlockExperimentalVMOptions -XX:+UseEpsilonGC
+ * ZGC (Use Java 17): -XX:+UseZGC
  * <p>
  * Try again. but this time do not save to the list (comment out line 44)
  */
