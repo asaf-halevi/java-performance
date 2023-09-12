@@ -19,6 +19,10 @@ public class Student {
         this.name = name;
     }
 
+    public Student(Student student) {
+        this(student.id, student.name);
+    }
+
     public long getId() {
         return id;
     }
@@ -42,9 +46,4 @@ public class Student {
                 ", name='" + name + '\'' +
                 '}';
     }
-
-    //    @Override
-    //    public void finalize(){
-    //        logger.info("Student {} was finalized", this.name);
-    //    }
 }

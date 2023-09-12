@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.management.ManagementFactory;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -15,11 +17,11 @@ public class LoiteringObjectsExample {
 
     private static final int STACK_CAPACITY = 100_000;
 
-    private final Student[] myStackOfStudents;
+    private final List<Student> myStackOfStudents;
     private int topOfStack = 0;
 
     public LoiteringObjectsExample() {
-        myStackOfStudents = new Student[STACK_CAPACITY];
+        myStackOfStudents = new LinkedList<>();
     }
 
     public static void main(String[] args) {
@@ -42,8 +44,8 @@ public class LoiteringObjectsExample {
         while (!studentsStack.isEmpty()) {
             logger.info("Student popped from stack: {} ", studentsStack.pop());
         }
-        logger.info(
-                "Check the Monitor and the number of Student objects in the heap dump now.\nEnter some input to close the application.");
+        logger.info("Check the Monitor and the number of Student objects in the heap dump now.");
+        logger.info("Enter some input to close the application.");
         scanner.nextLine();
         scanner.close();
         logger.info("Check the heap now.\nEnter some input to close app. Check heap again.");
@@ -55,16 +57,20 @@ public class LoiteringObjectsExample {
     }
 
     public void push(Student student) {
-        myStackOfStudents[topOfStack++] = student;
+        myStackOfStudents.add(student);
+        topOfStack++;
     }
 
     public Student pop() {
-        //The error
-        return myStackOfStudents[--topOfStack];
+        topOfStack--;
+
+        // the error
+        return myStackOfStudents.get(topOfStack);
 
         //The fix
-        //        Student result = myStackOfStudents[--topOfStack];
-        //        myStackOfStudents[topOfStack] = null;
+        //        Student student = myStackOfStudents.get(topOfStack);
+        //        Student result = new Student(student);
+        //        student = null;
         //        return result;
     }
 }
