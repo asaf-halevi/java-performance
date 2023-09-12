@@ -14,7 +14,7 @@ public class LoiteringObjectsExample {
 
     private static final int STACK_CAPACITY = 100_000;
 
-    private Student[] myStackOfStudents;
+    private final Student[] myStackOfStudents;
     private int topOfStack = 0;
 
     public LoiteringObjectsExample() {
