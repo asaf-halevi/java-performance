@@ -3,6 +3,7 @@ package references;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.management.ManagementFactory;
 import java.util.Scanner;
 
 /**
@@ -22,6 +23,8 @@ public class LoiteringObjectsExample {
     }
 
     public static void main(String[] args) {
+        String processId = ManagementFactory.getRuntimeMXBean().getName();
+        logger.debug("PID={}", processId);
         LoiteringObjectsExample studentsStack = new LoiteringObjectsExample();
         Scanner scanner = new Scanner(System.in);
         logger.info("Check the heap now.\nEnter some input to begin creation of objects.");
@@ -43,6 +46,7 @@ public class LoiteringObjectsExample {
                 "Check the Monitor and the number of Student objects in the heap dump now.\nEnter some input to close the application.");
         scanner.nextLine();
         scanner.close();
+        logger.info("Check the heap now.\nEnter some input to close app.");
         logger.info("App Closed");
     }
 
