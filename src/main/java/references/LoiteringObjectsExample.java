@@ -46,7 +46,7 @@ public class LoiteringObjectsExample {
                 "Check the Monitor and the number of Student objects in the heap dump now.\nEnter some input to close the application.");
         scanner.nextLine();
         scanner.close();
-        logger.info("Check the heap now.\nEnter some input to close app.");
+        logger.info("Check the heap now.\nEnter some input to close app. Check heap again.");
         logger.info("App Closed");
     }
 
