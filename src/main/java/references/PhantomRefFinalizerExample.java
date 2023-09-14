@@ -3,7 +3,6 @@ package references;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ public class PhantomRefFinalizerExample {
 
         //create a students list and maintain a phantom-references list
         for (int i = 0; i < 10; ++i) {
-            Student student = new Student(123, "George");
+            Student student = new Student(123, "George" + i);
             students.add(student);
             references.add(new MyPhantomReference(student, referenceQueue));
         }
@@ -31,19 +30,22 @@ public class PhantomRefFinalizerExample {
 
         //check if references exist
         Reference<?> referenceFromQueue;
-        int i = 1;
-        for (PhantomReference<Student> reference : references) {
-            logger.info("Is reference no.{} in the queue? {}", i, reference.isEnqueued());
-            i++;
+        for (int i = 0; i < references.size(); i++) {
+            logger.info("Is reference no.{} in the queue? {}", i, references.get(i).enqueue());
         }
 
         //finalize students
-        i = 1;
+        int i = 0;
         while ((referenceFromQueue = referenceQueue.poll()) != null) {
             logger.info("Finalizing object no.{}", i);
             i++;
             ((MyPhantomReference) referenceFromQueue).finalizeResources();
             referenceFromQueue.clear();
+        }
+
+
+        for (int j = 0; j < references.size(); j++) {
+            logger.info("Is reference no.{} in the queue? {}", j, references.get(j).isEnqueued());
         }
     }
 }
