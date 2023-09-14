@@ -3,31 +3,40 @@ package references;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.ref.Reference;
 import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
 
 public class SoftRefExample {
 
     private static final Logger logger = LoggerFactory.getLogger(SoftRefExample.class.getName());
 
     public static void main(String[] args) {
-        // Client gets strong reference
-        Student student = new Student(1, "Dan");
+        SoftRefExample example = new SoftRefExample();
+        example.testReference(false);
+        logger.debug("\n\n");
+        example.testReference(true);
+    }
 
-        // Cache mechanism gets soft reference
-        SoftReference<Student> soft = new SoftReference<>(student);
-
-        // Client release reference when no longer needed
-        student = null;
-
-        // Cache keeps on referencing even between GC calls
-        System.gc();
-
-        try {
-            Thread.yield();
-        } catch (Exception e) {
-            // Do nothing
+    public void testReference(boolean isSoftRef) {
+        Reference<Student> studentRef;
+        if (isSoftRef) {
+            studentRef = getSoftReference(new Student(1, "Softy"));
+        } else {
+            studentRef = getWeakReference(new Student(2, "Weaky"));
         }
-        // Other clients may ask for strong references via soft.get() method
-        logger.info("Soft={}", soft.get());
+        logger.debug("Data from ref before gc: {}", studentRef.get());
+        System.gc();
+        logger.debug("-------gc called ---------");
+
+        logger.debug("Data from ref after gc: {}", studentRef.get());
+    }
+
+    private SoftReference<Student> getSoftReference(Student student) {
+        return new SoftReference<>(student);
+    }
+
+    private WeakReference<Student> getWeakReference(Student student) {
+        return new WeakReference<>(student);
     }
 }
