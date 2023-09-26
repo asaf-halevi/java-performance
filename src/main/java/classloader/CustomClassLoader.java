@@ -1,5 +1,8 @@
 package classloader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -10,8 +13,10 @@ import java.io.InputStream;
  */
 public class CustomClassLoader extends ClassLoader {
 
+    private static final Logger logger = LoggerFactory.getLogger(CustomClassLoader.class.getName());
+
     @Override
-    public Class findClass(String name) throws ClassNotFoundException {
+    public Class findClass(String name) {
         byte[] b = loadClassFromFile(name);
         return defineClass(name, b, 0, b.length);
     }
@@ -21,13 +26,15 @@ public class CustomClassLoader extends ClassLoader {
                 fileName.replace('.', File.separatorChar) + ".class");
         byte[] buffer;
         ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-        int nextValue = 0;
+        int nextValue;
         try {
-            while ((nextValue = inputStream.read()) != -1) {
-                byteStream.write(nextValue);
+            if (inputStream != null) {
+                while ((nextValue = inputStream.read()) != -1) {
+                    byteStream.write(nextValue);
+                }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("{}", e.getMessage(), e);
         }
         buffer = byteStream.toByteArray();
         return buffer;
