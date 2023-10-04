@@ -12,31 +12,29 @@ public class SoftRefExample {
     private static final Logger logger = LoggerFactory.getLogger(SoftRefExample.class.getName());
 
     public static void main(String[] args) {
-        SoftRefExample example = new SoftRefExample();
-        example.testReference(false);
-        logger.debug("\n\n");
-        example.testReference(true);
+        Reference<Student> studentRef;
+
+        studentRef = getWeakReference(new Student(1, "Weakling"));
+        logResults(studentRef);
+
+        System.out.println("\n---------------\n");
+
+        studentRef = getSoftReference(new Student(2, "Softy"));
+        logResults(studentRef);
     }
 
-    public void testReference(boolean isSoftRef) {
-        Reference<Student> studentRef;
-        if (isSoftRef) {
-            studentRef = getSoftReference(new Student(1, "Softy"));
-        } else {
-            studentRef = getWeakReference(new Student(2, "Weaky"));
-        }
+    private static void logResults(Reference<Student> studentRef) {
         logger.debug("Data from ref before gc: {}", studentRef.get());
         System.gc();
         logger.debug("-------gc called ---------");
-
         logger.debug("Data from ref after gc: {}", studentRef.get());
     }
 
-    private SoftReference<Student> getSoftReference(Student student) {
+    private static SoftReference<Student> getSoftReference(Student student) {
         return new SoftReference<>(student);
     }
 
-    private WeakReference<Student> getWeakReference(Student student) {
+    private static WeakReference<Student> getWeakReference(Student student) {
         return new WeakReference<>(student);
     }
 }
