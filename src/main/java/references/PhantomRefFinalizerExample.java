@@ -3,49 +3,38 @@ package references;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.ref.Reference;
+import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PhantomRefFinalizerExample {
 
     private static final Logger logger = LoggerFactory.getLogger(PhantomRefFinalizerExample.class.getName());
 
     public static void main(String[] args) {
-        ReferenceQueue<Object> referenceQueue = new ReferenceQueue<>();
-        List<MyPhantomReference> references = new ArrayList<>();
-        List<Student> students = new ArrayList<>();
+        // Create an object
+        String someObject = new String("Hello, PhantomReference!");
 
-        //create a students list and maintain a phantom-references list
-        for (int i = 0; i < 10; ++i) {
-            Student student = new Student(123, "George" + i);
-            students.add(student);
-            references.add(new MyPhantomReference(student, referenceQueue));
-        }
+        // Create a reference queue
+        ReferenceQueue<String> referenceQueue = new ReferenceQueue<>();
 
-        //delete students list
-        students = null;
-        System.gc();
+        // Create a phantom reference to the object and associate it with the reference queue
+        PhantomReference<String> phantomReference = new PhantomReference<>(someObject, referenceQueue);
 
-        //check if references exist
-        Reference<?> referenceFromQueue;
-        for (int i = 0; i < references.size(); i++) {
-            logger.info("Is reference no.{} in the queue? {}", i, references.get(i).enqueue());
-        }
+        // Set the object to null, making it eligible for garbage collection
+        someObject = null;
 
-        //finalize students
-        int i = 0;
-        while ((referenceFromQueue = referenceQueue.poll()) != null) {
-            logger.info("Finalizing object no.{}", i);
-            i++;
-            ((MyPhantomReference) referenceFromQueue).finalizeResources();
-            referenceFromQueue.clear();
-        }
+        // Poll the reference queue to check if the phantom reference has been enqueued
+        while (true) {
+            System.gc(); // Request garbage collection (not guaranteed to run immediately)
 
-
-        for (int j = 0; j < references.size(); j++) {
-            logger.info("Is reference no.{} in the queue? {}", j, references.get(j).isEnqueued());
+            // Check if the reference has been enqueued
+            PhantomReference<String> enqueuedReference = (PhantomReference<String>) referenceQueue.poll();
+            if (enqueuedReference != null) {
+                logger.info("Phantom reference is enqueued.");
+                // Perform cleanup or resource management here
+                // ...
+                break; // Exit the loop
+            }
         }
     }
 }
