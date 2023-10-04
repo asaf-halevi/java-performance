@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.management.ManagementFactory;
 import java.lang.ref.WeakReference;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,14 +13,14 @@ public class WeakRefExample {
 
     private static final Logger logger = LoggerFactory.getLogger(WeakRefExample.class.getName());
 
-    private static final int STACK_CAPACITY = 100_000;
+    private static final int STACK_CAPACITY = 70_000;
 
     // !!!!!!!!!!! Change 1 of 3: Using WeakReference !!!!!!!!
     private final List<WeakReference<Student>> myStackOfStudents;
     private int topOfStack = 0;
 
     public WeakRefExample() {
-        myStackOfStudents = new LinkedList<>();
+        myStackOfStudents = new ArrayList<>();
     }
 
     public void push(Student student) {
@@ -60,8 +60,10 @@ public class WeakRefExample {
         scanner.nextLine();
 
         //pop from stack
+        int counter = 0;
         while (!studentsStack.isEmpty()) {
-            logger.info("Student popped from stack: {} ", studentsStack.pop());
+            counter++;
+            logger.info("Student no.{} was popped from stack: {} ", counter, studentsStack.pop());
         }
         logger.info("Check the Monitor and the number of Student objects in the heap dump now.");
         logger.info("Enter some input to close the application.");

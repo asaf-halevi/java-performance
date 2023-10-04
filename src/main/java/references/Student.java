@@ -46,9 +46,4 @@ public class Student {
                 ", name='" + name + '\'' +
                 '}';
     }
-
-    @Override
-    protected void finalize() {
-        logger.debug("Student {} was finalized", name);
-    }
 }

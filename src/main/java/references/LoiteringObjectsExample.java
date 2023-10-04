@@ -15,7 +15,7 @@ public class LoiteringObjectsExample {
 
     private static final Logger logger = LoggerFactory.getLogger(LoiteringObjectsExample.class.getName());
 
-    private static final int STACK_CAPACITY = 100_000;
+    private static final int STACK_CAPACITY = 70_000;
 
     private final List<Student> myStackOfStudents;
     private int topOfStack = 0;
