@@ -15,11 +15,29 @@ public class WeakRefExample {
 
     private static final int STACK_CAPACITY = 100_000;
 
+    // !!!!!!!!!!! Change 1 of 3: Using WeakReference !!!!!!!!
     private final List<WeakReference<Student>> myStackOfStudents;
     private int topOfStack = 0;
 
     public WeakRefExample() {
         myStackOfStudents = new LinkedList<>();
+    }
+
+    public void push(Student student) {
+        // !!!!!!!!!!! Change 2 of 3: Here's the magic !!!!!!!!
+        WeakReference<Student> studentWeakRef = new WeakReference<>(student);
+        myStackOfStudents.add(studentWeakRef);
+        topOfStack++;
+    }
+
+    public Student pop() {
+        topOfStack--;
+        // !!!!!!!!!!! Change 3 of 3: return strong reference !!!!!!!!
+        return myStackOfStudents.get(topOfStack).get();
+    }
+
+    public boolean isEmpty() {
+        return topOfStack == 0;
     }
 
     public static void main(String[] args) {
@@ -38,6 +56,9 @@ public class WeakRefExample {
             studentsStack.push(student);
         }
 
+        logger.info("all students were pushed.");
+        scanner.nextLine();
+
         //pop from stack
         while (!studentsStack.isEmpty()) {
             logger.info("Student popped from stack: {} ", studentsStack.pop());
@@ -48,21 +69,5 @@ public class WeakRefExample {
         scanner.close();
         logger.info("Check the heap now.\nEnter some input to close app. Check heap again.");
         logger.info("App Closed");
-    }
-
-    public void push(Student student) {
-        // !!!!!!!!!!! Here's the magic !!!!!!!!
-        WeakReference<Student> studentWeakRef = new WeakReference<>(student);
-        myStackOfStudents.add(studentWeakRef);
-        topOfStack++;
-    }
-
-    public Student pop() {
-        topOfStack--;
-        return myStackOfStudents.get(topOfStack).get(); //return strong reference
-    }
-
-    public boolean isEmpty() {
-        return topOfStack == 0;
     }
 }
