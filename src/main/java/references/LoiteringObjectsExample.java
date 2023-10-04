@@ -24,34 +24,6 @@ public class LoiteringObjectsExample {
         myStackOfStudents = new LinkedList<>();
     }
 
-    public static void main(String[] args) {
-        String processId = ManagementFactory.getRuntimeMXBean().getName();
-        logger.debug("PID={}", processId);
-        LoiteringObjectsExample studentsStack = new LoiteringObjectsExample();
-        Scanner scanner = new Scanner(System.in);
-        logger.info("Check the heap now.\nEnter some input to begin creation of objects.");
-        scanner.nextLine();
-        logger.info("{} Students are being pushed into stack", LoiteringObjectsExample.STACK_CAPACITY);
-
-        //fill the stack
-        for (int i = 0; i < LoiteringObjectsExample.STACK_CAPACITY; i++) {
-            long randomNumber = Math.round(Math.random() * LoiteringObjectsExample.STACK_CAPACITY);
-            Student student = new Student(randomNumber, "John" + randomNumber);
-            studentsStack.push(student);
-        }
-
-        //pop from stack
-        while (!studentsStack.isEmpty()) {
-            logger.info("Student popped from stack: {} ", studentsStack.pop());
-        }
-        logger.info("Check the Monitor and the number of Student objects in the heap dump now.");
-        logger.info("Enter some input to close the application.");
-        scanner.nextLine();
-        scanner.close();
-        logger.info("Check the heap now.\nEnter some input to close app. Check heap again.");
-        logger.info("App Closed");
-    }
-
     public boolean isEmpty() {
         return topOfStack == 0;
     }
@@ -72,5 +44,36 @@ public class LoiteringObjectsExample {
         //        Student result = new Student(student);
         //        student = null;
         //        return result;
+    }
+
+    public static void main(String[] args) {
+        String processId = ManagementFactory.getRuntimeMXBean().getName();
+        logger.debug("PID={}", processId);
+        LoiteringObjectsExample studentsStack = new LoiteringObjectsExample();
+        Scanner scanner = new Scanner(System.in);
+        logger.info("Check the heap now.\nEnter some input to begin creation of objects.");
+        scanner.nextLine();
+        logger.info("{} Students are being pushed into stack", LoiteringObjectsExample.STACK_CAPACITY);
+
+        //fill the stack
+        for (int i = 0; i < LoiteringObjectsExample.STACK_CAPACITY; i++) {
+            long randomNumber = Math.round(Math.random() * LoiteringObjectsExample.STACK_CAPACITY);
+            Student student = new Student(randomNumber, "John" + randomNumber);
+            studentsStack.push(student);
+        }
+
+        logger.info("all students were pushed.");
+        scanner.nextLine();
+
+        //pop from stack
+        while (!studentsStack.isEmpty()) {
+            logger.info("Student popped from stack: {} ", studentsStack.pop());
+        }
+        logger.info("Check the Monitor and the number of Student objects in the heap dump now.");
+        logger.info("Enter some input to close the application.");
+        scanner.nextLine();
+        scanner.close();
+        logger.info("Check the heap now.\nEnter some input to close app. Check heap again.");
+        logger.info("App Closed");
     }
 }
