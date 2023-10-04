@@ -13,7 +13,8 @@ public class WeakRefExample {
 
     private static final Logger logger = LoggerFactory.getLogger(WeakRefExample.class.getName());
 
-    private static final int STACK_CAPACITY = 70_000;
+    //make sure hep is big enough, set -Xmn4G
+    private static final int STACK_CAPACITY = 100_000;
 
     // !!!!!!!!!!! Change 1 of 3: Using WeakReference !!!!!!!!
     private final List<WeakReference<Student>> myStackOfStudents;
