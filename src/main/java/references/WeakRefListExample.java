@@ -41,14 +41,14 @@ public class WeakRefListExample {
 
         logger.info("Sublist first value: {}", onlyJohns.get(0));
 
-        logger.info("Removing a student from main list");
+        logger.info("Clearing main students list");
         mainStudentsList.clear();
 
         logger.info("Calling GC");
         System.gc();
 
         logger.info("Sublist first value: {} ", onlyJohns.get(0));
-
+        logger.info("Unneeded Information remains in heap!");
     }
 
     private static void weakReferenceRun() {
@@ -74,12 +74,13 @@ public class WeakRefListExample {
 
         logger.info("Sublist first value: {} ", onlyJohns.get(0).get());
 
-        logger.info("Removing a student from main list");
+        logger.info("Clearing main students list");
         mainStudentsList.clear();
 
         logger.info("Calling GC");
         System.gc();
 
         logger.info("Sublist first value: {} ", onlyJohns.get(0).get());
+        logger.info("Unneeded Information is removed from heap!");
     }
 }
