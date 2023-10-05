@@ -16,18 +16,18 @@ public class WeakHashMapExample {
         Integer key = 1234;
         students.put(key, student);
 
-        logger.info("Does object exist before GC? {}", students.containsKey(1234)); //true
+        logger.info("Map before GC: {}", students);
 
         System.gc();
 
-        logger.info("Does object exist after first GC? {}", students.containsKey(1234));//true
+        logger.info("Map after first GC: {}", students);
 
         key = null;
 
-        logger.info("Does object exist after key is set to null? {}", students.containsKey(1234));//true
+        logger.info("Map after key is set to null: {}", students);
 
         System.gc();
 
-        logger.info("Does object exist after second GC? {}", students.containsKey(1234));//false
+        logger.info("Map after second GC: {}", students); // empty
     }
 }
