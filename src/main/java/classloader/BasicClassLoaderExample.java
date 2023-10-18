@@ -22,6 +22,7 @@ public class BasicClassLoaderExample extends ClassLoader {
                 }
             }
             if (resolve) {
+                //link the class
                 resolveClass(c);
             }
             return c;
