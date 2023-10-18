@@ -4,9 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- *
- */
 public class StaticInitExample {
 
     private static final Logger logger = LoggerFactory.getLogger(StaticInitExample.class.getName());
@@ -23,8 +20,8 @@ public class StaticInitExample {
 
     public static void main(String[] args) {
         //Change the order of static calls with -verbose
-        double resultOfMyRandom = StaticInitExample.myRandom("xyz");
         String resultOfMyConcat = StaticInitExample.myTextEditor("abddf");
+        double resultOfMyRandom = StaticInitExample.myRandom("xyz");
 
         logger.info("Result of calling myRandom is {}", resultOfMyRandom);
         logger.info("Result of calling myTextEditor is {}", resultOfMyConcat);
