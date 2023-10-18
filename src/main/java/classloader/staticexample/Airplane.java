@@ -8,7 +8,7 @@ public class Airplane extends Vehicle implements Flyable {
     private static final Logger logger = LoggerFactory.getLogger(Airplane.class.getName());
 
     public Airplane() {
-        logger.info("An Airplanes was created");
+        logger.info("An Airplane was created");
     }
 
     public static void main(String[] args) {
