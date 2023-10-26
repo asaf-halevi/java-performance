@@ -18,8 +18,9 @@ public class MemoryMappedFileExample {
 
     private static final Logger logger = LoggerFactory.getLogger(MemoryMappedFileExample.class.getName());
 
-    private static final String INPUT_FILE = "src/main/resources/bigFile.txt";
+    private static final String INPUT_FILE = "src/main/resources/test2.txt";
     private static final String OUTPUT_FILE = "src/main/resources/bigFile2.txt";
+
 
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
@@ -28,30 +29,28 @@ public class MemoryMappedFileExample {
         Profiler myProfiler = new Profiler("MemoryMappedFileExample");
 
         // check memory with visualVM here
-        memoryCheckReminder(scanner);
+        logger.info("get text from regular file: ");
+        scanner.next();
         myProfiler.start("get text from regular file");
         String result = memoryMappedFileExample.getTextFromFile(INPUT_FILE);
+        logger.debug("Number of bytes read from file is {}", result.length());
 
         // check memory with visualVM here - we need to free the memory
-        memoryCheckReminder(scanner);
+        logger.info("write MMF: ");
+        scanner.next();
         myProfiler.start("write MMF");
         File file = memoryMappedFileExample.writeMemoryMappedFile(result);
         result = null;
         System.gc();
 
         // check memory with visualVM here
-        memoryCheckReminder(scanner);
+        logger.info("read MMF: ");
+        scanner.next();
         myProfiler.start("read MMF");
         memoryMappedFileExample.readMemoryMappedFile(file);
 
         myProfiler.stop().print();
-        memoryCheckReminder(scanner);
         scanner.close();
-    }
-
-    private static void memoryCheckReminder(Scanner scanner) {
-        logger.info("Check memory with profiler an then enter text: ");
-        scanner.next();
     }
 
     protected static String getFormattedNumber(long num) {

@@ -7,29 +7,36 @@ import org.slf4j.profiler.Profiler;
 import java.io.*;
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class RegularFileExample {
 
     private static final Logger logger = LoggerFactory.getLogger(RegularFileExample.class.getName());
 
-    private static final String INPUT_FILE = "src/main/resources/bigFile.txt";
+    private static final String INPUT_FILE = "src/main/resources/test2.txt";
     private static final String OUTPUT_FILE = "src/main/resources/bigFile2.txt";
 
     public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
         RegularFileExample regularFileExample = new RegularFileExample();
         Profiler myProfiler = new Profiler("RegularFileExample");
 
         // check memory with visualVM here
+        logger.info("read");
+        scanner.next();
         myProfiler.start("read");
         String result = regularFileExample.getTextFromFile(INPUT_FILE);
 
         // check memory with visualVM here - if we don't save data in file - huge amounts of memory will be used!
+        logger.info("write");
+        scanner.next();
         myProfiler.start("write");
         regularFileExample.saveTextIntoFile(result);
         result = null;
         System.gc();
 
         myProfiler.stop().print();
+        scanner.close();
     }
 
     protected static String getTime(long time) {
