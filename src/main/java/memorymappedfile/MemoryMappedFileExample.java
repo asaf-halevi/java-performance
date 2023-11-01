@@ -110,7 +110,8 @@ public class MemoryMappedFileExample {
             MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
 
             // the buffer now reads the file as if it were loaded in memory.
-            logger.debug("file size={} bytes", getFormattedNumber(buffer.capacity())); // Get the size based on content size of file
+            final String fileSize = getFormattedNumber(buffer.capacity());
+            logger.debug("file size={} bytes", fileSize);
 
             StringBuilder text = new StringBuilder();
             // You can read the file from this buffer the way you like.

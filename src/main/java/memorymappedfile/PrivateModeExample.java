@@ -23,19 +23,25 @@ public class PrivateModeExample {
     public File writeMemoryMappedFile(String text) throws IOException {
         // Create file object
         File file = new File(OUTPUT_FILE);
-        file.delete();
 
         try (RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw")) {// FILE MUST BE OPENED FOR READ/WRITE !!!
             // Get file channel in read-write mode
             FileChannel fileChannel = randomAccessFile.getChannel();
 
             // Get direct byte buffer access using channel.map() operation
-            MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.PRIVATE, 0,
-                    text.length());// MODE IS PRIVATE !!! CHECK OUTPUT WITH PRIVATE & READ_WRITE MODES !!!
-            // fileChannel.unmap(); //NOTE THAT THERE IS NO fileChannel.unmap(); !!!
+            // MODE IS PRIVATE !!! CHECK OUTPUT WITH PRIVATE & READ_WRITE MODES !!!
+            MappedByteBuffer buffer = fileChannel.map(FileChannel.MapMode.PRIVATE, 0, text.length());
+            logger.debug("Original file size is {}", buffer.capacity());
 
             // Write the content using put methods
+            for (int i = 0; i < buffer.limit(); i++) {
+                logger.debug("content={}", (char) buffer.get(i));
+            }
             buffer.put(text.getBytes());
+            for (int i = 0; i < buffer.limit(); i++) {
+                logger.debug("content={}", (char) buffer.get(i));
+            }
+
             fileChannel.close();
             logger.debug("File size according to private buffer after closing fileChannel is {}", buffer.capacity());
         }
